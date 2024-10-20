@@ -1,0 +1,49 @@
+Class Customer {
+    - customerID: int
+    - name: String
+    - age: int
+    - membershipStatus: String
+    + enterPool(): void
+    + exitPool(): void
+}
+
+Class Staff {
+    - staffID: int
+    - name: String
+    - position: String
+    - salary: double
+    + checkIn(): void
+    + checkOut(): void
+}
+
+Class Lifeguard extends Staff {
+    - certificationLevel: String
+    + monitorPool(): void
+}
+
+Class Instructor extends Staff {
+    + conductClass(): void
+}
+
+Class SwimmingClass {
+    - classID: int
+    - className: String
+    - schedule: String
+    + assignInstructor(Instructor): void
+    + enrollChild(Customer): void
+}
+
+Class PoolBranch {
+    - branchID: int
+    - location: String
+    + addCustomer(Customer): void
+    + addStaff(Staff): void
+}
+
+Relationships:
+1. Customer -- (association) --> PoolBranch
+2. Customer -- (association) --> SwimmingClass
+3. Lifeguard -- (association) --> PoolBranch
+4. Instructor -- (association) --> SwimmingClass
+5. Staff -- (generalization) --> Lifeguard
+6. Staff -- (generalization) --> Instructor
